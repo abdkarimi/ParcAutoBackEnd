@@ -12,13 +12,14 @@ import java.util.Set;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class TypeVehicule {
+public class Statut {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idTypeVehicule;
-    private String libelleTypeVehicule;
+    private Long idStatut;
+    private String designationStatut;
+    private String observations;
 
-    @OneToMany(mappedBy = "typeVehicule", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "statut", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonManagedReference
     private Set<Vehicule> vehicules;
 }

@@ -11,7 +11,6 @@ import lombok.*;
 @NoArgsConstructor
 @Builder
 public class Token {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
@@ -26,5 +25,4 @@ public class Token {
     @ManyToOne
     @JoinColumn(name = "id_user")
     private Utilisateur utilisateur;
-
 }

@@ -1,8 +1,8 @@
 package com.example.parcautobackend.model.entities;
 
 import jakarta.persistence.*;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.*;
 
 import java.util.Date;
@@ -33,10 +33,12 @@ public class Intervention {
     @JsonBackReference
     private TypeIntervention typeIntervention;
 
+    @ManyToOne
+    @JoinColumn(name = "idGarage")
+    @JsonBackReference
+    private Garage garage;
+
     @OneToMany(mappedBy = "intervention", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonManagedReference
     private Set<Tache> taches;
-
-    // Getters and setters
 }
-

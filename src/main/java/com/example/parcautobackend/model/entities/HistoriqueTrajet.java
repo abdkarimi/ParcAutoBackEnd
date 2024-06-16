@@ -4,26 +4,21 @@ import jakarta.persistence.*;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.*;
 
-import java.util.Date;
-
 @Entity
 @Setter
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class Facture {
+public class HistoriqueTrajet {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idFacture;
-    private String numeroFacture;
-    private Date dateFacture;
+    private Long idTrajet;
+    private Double latitudeTrajet;
+    private Double longitudeTrajet;
 
     @ManyToOne
-    @JoinColumn(name = "idTache")
+    @JoinColumn(name = "ordre_mission_id")
     @JsonBackReference
-    private Tache tache;
-
-    // Getters and setters
+    private OrdreMission ordreMission;
 }
-

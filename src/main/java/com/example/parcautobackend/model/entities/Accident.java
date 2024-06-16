@@ -24,7 +24,4 @@ public class Accident {
     @JoinColumn(name = "idVehicule")
     @JsonBackReference
     private Vehicule vehicule;
-
-    // Getters and setters
 }
-

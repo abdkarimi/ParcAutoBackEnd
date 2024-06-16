@@ -10,16 +10,16 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class Sanctionner {
+public class Alerte {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idSanction;
+    private Long idAlerte;
+    private String descriptionAlerte;
+    private Boolean kmAlerte;
+    private String declencheAlerte;
 
     @ManyToOne
-    @JoinColumn(name = "idPV")
+    @JoinColumn(name = "vehicule_id")
     @JsonBackReference
-    private PV pv;
-
-    // Getters and setters
+    private Vehicule vehicule;
 }
-

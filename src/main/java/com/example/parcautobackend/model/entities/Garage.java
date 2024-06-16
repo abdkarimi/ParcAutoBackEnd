@@ -25,7 +25,5 @@ public class Garage {
 
     @OneToMany(mappedBy = "garage", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonManagedReference
-    private Set<Tache> taches;
-
-    // Getters and setters
+    private Set<Intervention> interventions;
 }

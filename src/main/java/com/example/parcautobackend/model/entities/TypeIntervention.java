@@ -21,7 +21,4 @@ public class TypeIntervention {
     @OneToMany(mappedBy = "typeIntervention", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonManagedReference
     private Set<Intervention> interventions;
-
-    // Getters and setters
 }
-

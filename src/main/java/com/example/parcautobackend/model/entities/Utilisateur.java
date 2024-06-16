@@ -1,6 +1,7 @@
 package com.example.parcautobackend.model.entities;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import lombok.*;
@@ -60,7 +61,8 @@ public class Utilisateur implements UserDetails {
     @Column(name = "Photo")
     private String photo;
 
-    @OneToMany(mappedBy = "utilisateur")
+    @OneToMany(mappedBy = "utilisateur", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference
     private List<Token> tokens;
 
 
@@ -69,6 +71,14 @@ public class Utilisateur implements UserDetails {
     @JoinColumn(name = "id_role")
     private Role idRole;
 
+    @OneToMany(mappedBy = "agent", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference
+    private List<OrdreMission> ordreMissions;
+
+    @ManyToOne
+    @JoinColumn(name = "structure_id")
+    @JsonBackReference
+    private Structure structure;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

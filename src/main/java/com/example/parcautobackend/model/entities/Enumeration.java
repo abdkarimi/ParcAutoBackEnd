@@ -20,8 +20,5 @@ public class Enumeration {
 
     @OneToMany(mappedBy = "enumeration", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonManagedReference
-    private Set<TypeIntervention> typeInterventions;
-
-    // Getters and setters
+    private Set<Vehicule> vehicules;
 }
-

@@ -25,6 +25,7 @@ public class Assurance {
     @JsonManagedReference
     private Set<Vehicule> vehicules;
 
-    // Getters and setters
+    @ManyToOne
+    @JoinColumn(name = "compagnie_id")
+    private Compagnie compagnie;
 }
-

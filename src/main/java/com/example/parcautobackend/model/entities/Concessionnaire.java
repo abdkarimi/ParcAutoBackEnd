@@ -23,10 +23,7 @@ public class Concessionnaire {
     private String faxConcessionnaire;
     private String email;
 
-/*    @OneToMany(mappedBy = "concessionnaire", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "concessionnaire", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonManagedReference
-    private Set<Modele> modeles;*/
-
-    // Getters and setters
+    private Set<Vehicule> vehicules;
 }
-
