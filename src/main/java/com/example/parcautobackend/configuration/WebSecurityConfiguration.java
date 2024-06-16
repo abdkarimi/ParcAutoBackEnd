@@ -34,10 +34,10 @@ public class WebSecurityConfiguration {
     public SecurityFilterChain securityFilterChain(HttpSecurity security) throws Exception {
         return security.csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth ->
-                                auth.requestMatchers("/resetPassword","/forgetPassword", "/login").permitAll()
+                                auth.requestMatchers("/resetPassword","/forgetPassword", "/login","/AULSH/**").permitAll()
                                         //.requestMatchers(getAdminlist().toArray(new String[0])).hasAuthority(RoleEnum.ADMINISTRATOR.name())
                                         //.requestMatchers(getCheckoutURLs().toArray(new String[0])).hasAuthority(RoleEnum.CHECKOUT.name())
-                                        .requestMatchers("/AULSH/**")
+                        // .requestMatchers("/AULSH/**")
 //                                .hasAnyAuthority("Admin", "Magasinier")
 //                                .anyRequest()
                                         /*.authenticated()*/

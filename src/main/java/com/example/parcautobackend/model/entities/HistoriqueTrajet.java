@@ -19,6 +19,6 @@ public class HistoriqueTrajet {
 
     @ManyToOne
     @JoinColumn(name = "ordre_mission_id")
-    @JsonBackReference
+    @JsonBackReference(value = "ordreMission-historiqueTrajet")
     private OrdreMission ordreMission;
 }

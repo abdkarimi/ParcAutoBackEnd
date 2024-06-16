@@ -19,6 +19,6 @@ public class TypeIntervention {
     private String libelleTypeIntervention;
 
     @OneToMany(mappedBy = "typeIntervention", cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonManagedReference
+    @JsonManagedReference(value = "typeIntervention-intervention")
     private Set<Intervention> interventions;
 }

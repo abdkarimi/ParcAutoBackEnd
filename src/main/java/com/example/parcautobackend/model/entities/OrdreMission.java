@@ -28,23 +28,25 @@ public class OrdreMission {
 
     @ManyToOne
     @JoinColumn(name = "agent_id")
-    @JsonBackReference
+    @JsonBackReference(value = "utilisateur-ordreMission")
     private Utilisateur agent;
 
     @ManyToOne
     @JoinColumn(name = "vehicule_id")
-    @JsonBackReference
+    @JsonBackReference(value = "vehicule-ordreMission")
     private Vehicule vehicule;
 
     @ManyToOne
     @JoinColumn(name = "destination_id")
+    @JsonBackReference(value = "destination-ordreMission")
     private Destination destination;
 
     @ManyToOne
     @JoinColumn(name = "perimetre_id")
+    @JsonBackReference(value = "perimetre-ordreMission")
     private Perimetre perimetre;
 
     @OneToMany(mappedBy = "ordreMission", cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonManagedReference
+    @JsonManagedReference(value = "ordreMission-historiqueTrajet")
     private Set<HistoriqueTrajet> historiqueTrajets;
 }

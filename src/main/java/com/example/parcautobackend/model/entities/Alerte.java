@@ -20,6 +20,6 @@ public class Alerte {
 
     @ManyToOne
     @JoinColumn(name = "vehicule_id")
-    @JsonBackReference
+    @JsonBackReference(value = "vehicule-alerte")
     private Vehicule vehicule;
 }

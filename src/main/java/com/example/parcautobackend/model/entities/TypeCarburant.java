@@ -19,6 +19,6 @@ public class TypeCarburant {
     private String libelleTypeCarburant;
 
     @OneToMany(mappedBy = "typeCarburant", cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonManagedReference
+    @JsonManagedReference(value = "typeCarburant-vehicule")
     private Set<Vehicule> vehicules;
 }

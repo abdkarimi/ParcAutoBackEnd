@@ -21,6 +21,6 @@ public class Perimetre {
     private Double longitudePerimetre;
 
     @OneToMany(mappedBy = "perimetre", cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonManagedReference
+    @JsonManagedReference(value = "perimetre-ordreMission")
     private Set<OrdreMission> ordreMissions;
 }

@@ -24,6 +24,6 @@ public class Garage {
     private String adresseGarage;
 
     @OneToMany(mappedBy = "garage", cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonManagedReference
+    @JsonManagedReference(value = "garage-intervention")
     private Set<Intervention> interventions;
 }

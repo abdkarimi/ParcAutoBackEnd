@@ -1,7 +1,7 @@
 package com.example.parcautobackend.model.entities;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.*;
 
 import java.util.Set;
@@ -21,6 +21,6 @@ public class Structure {
     private Integer responsableStructure;
 
     @OneToMany(mappedBy = "structure", cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonManagedReference
+    @JsonManagedReference(value = "structure-utilisateur")
     private Set<Utilisateur> utilisateurs;
 }

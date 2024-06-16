@@ -21,6 +21,6 @@ public class Tache {
 
     @ManyToOne
     @JoinColumn(name = "idIntervention")
-    @JsonBackReference
+    @JsonBackReference(value = "intervention-tache")
     private Intervention intervention;
 }

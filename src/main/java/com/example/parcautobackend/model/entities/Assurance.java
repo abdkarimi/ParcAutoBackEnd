@@ -1,6 +1,7 @@
 package com.example.parcautobackend.model.entities;
 
 import jakarta.persistence.*;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.*;
 
@@ -22,10 +23,11 @@ public class Assurance {
     private Date finGarantie;
 
     @OneToMany(mappedBy = "assurance", cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonManagedReference
+    @JsonManagedReference(value = "assurance-vehicule")
     private Set<Vehicule> vehicules;
 
     @ManyToOne
     @JoinColumn(name = "compagnie_id")
+    @JsonBackReference(value = "compagnie-assurance")
     private Compagnie compagnie;
 }

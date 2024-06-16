@@ -21,7 +21,6 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-
 public class Utilisateur implements UserDetails {
     public Utilisateur(String username, String password) {
     }
@@ -62,9 +61,8 @@ public class Utilisateur implements UserDetails {
     private String photo;
 
     @OneToMany(mappedBy = "utilisateur", cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonManagedReference
+    @JsonManagedReference(value = "utilisateur-token")
     private List<Token> tokens;
-
 
     @ManyToOne(fetch = FetchType.EAGER)
     @OnDelete(action = OnDeleteAction.CASCADE)
@@ -72,12 +70,12 @@ public class Utilisateur implements UserDetails {
     private Role idRole;
 
     @OneToMany(mappedBy = "agent", cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonManagedReference
+    @JsonManagedReference(value = "utilisateur-ordreMission")
     private List<OrdreMission> ordreMissions;
 
     @ManyToOne
     @JoinColumn(name = "structure_id")
-    @JsonBackReference
+    @JsonBackReference(value = "structure-utilisateur")
     private Structure structure;
 
     @Override

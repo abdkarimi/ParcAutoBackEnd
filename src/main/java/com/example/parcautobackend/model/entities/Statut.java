@@ -20,6 +20,6 @@ public class Statut {
     private String observations;
 
     @OneToMany(mappedBy = "statut", cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonManagedReference
+    @JsonManagedReference(value = "statut-vehicule")
     private Set<Vehicule> vehicules;
 }

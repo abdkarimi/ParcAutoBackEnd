@@ -18,6 +18,6 @@ public class Modele {
 
     @ManyToOne
     @JoinColumn(name = "idMarque")
-    @JsonBackReference
+    @JsonBackReference(value = "marque-modele")
     private Marque marque;
 }

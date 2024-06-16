@@ -25,20 +25,20 @@ public class Intervention {
 
     @ManyToOne
     @JoinColumn(name = "idVehicule")
-    @JsonBackReference
+    @JsonBackReference(value = "vehicule-intervention")
     private Vehicule vehicule;
 
     @ManyToOne
     @JoinColumn(name = "idTypeIntervention")
-    @JsonBackReference
+    @JsonBackReference(value = "typeIntervention-intervention")
     private TypeIntervention typeIntervention;
 
     @ManyToOne
     @JoinColumn(name = "idGarage")
-    @JsonBackReference
+    @JsonBackReference(value = "garage-intervention")
     private Garage garage;
 
     @OneToMany(mappedBy = "intervention", cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonManagedReference
+    @JsonManagedReference(value = "intervention-tache")
     private Set<Tache> taches;
 }

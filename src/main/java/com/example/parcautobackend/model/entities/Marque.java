@@ -19,6 +19,6 @@ public class Marque {
     private String libelleMarque;
 
     @OneToMany(mappedBy = "marque", cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonManagedReference
+    @JsonManagedReference(value = "marque-modele")
     private Set<Modele> modeles;
 }

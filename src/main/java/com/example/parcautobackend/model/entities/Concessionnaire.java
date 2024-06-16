@@ -24,6 +24,6 @@ public class Concessionnaire {
     private String email;
 
     @OneToMany(mappedBy = "concessionnaire", cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonManagedReference
+    @JsonManagedReference(value = "concessionnaire-vehicule")
     private Set<Vehicule> vehicules;
 }

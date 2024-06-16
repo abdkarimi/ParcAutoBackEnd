@@ -27,52 +27,52 @@ public class Vehicule {
 
     @ManyToOne
     @JoinColumn(name = "idModele")
-    @JsonBackReference
+    @JsonBackReference(value = "modele-vehicule")
     private Modele modele;
 
     @ManyToOne
     @JoinColumn(name = "idAssurance")
-    @JsonBackReference
+    @JsonBackReference(value = "assurance-vehicule")
     private Assurance assurance;
 
     @ManyToOne
     @JoinColumn(name = "idTypeCarburant")
-    @JsonBackReference
+    @JsonBackReference(value = "typeCarburant-vehicule")
     private TypeCarburant typeCarburant;
 
     @ManyToOne
     @JoinColumn(name = "idTypeVehicule")
-    @JsonBackReference
+    @JsonBackReference(value = "typeVehicule-vehicule")
     private TypeVehicule typeVehicule;
 
     @ManyToOne
     @JoinColumn(name = "idEnumeration")
-    @JsonBackReference
+    @JsonBackReference(value = "enumeration-vehicule")
     private Enumeration enumeration;
 
     @ManyToOne
     @JoinColumn(name = "idStatut")
-    @JsonBackReference
+    @JsonBackReference(value = "statut-vehicule")
     private Statut statut;
 
     @ManyToOne
-    @JoinColumn(name = "concessionnaire_id")
-    @JsonBackReference
+    @JoinColumn(name = "idConcessionnaire")
+    @JsonBackReference(value = "concessionnaire-vehicule")
     private Concessionnaire concessionnaire;
 
     @OneToMany(mappedBy = "vehicule", cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonManagedReference
+    @JsonManagedReference(value = "vehicule-intervention")
     private Set<Intervention> interventions;
 
     @OneToMany(mappedBy = "vehicule", cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonManagedReference
+    @JsonManagedReference(value = "vehicule-accident")
     private Set<Accident> accidents;
 
     @OneToMany(mappedBy = "vehicule", cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonManagedReference
+    @JsonManagedReference(value = "vehicule-alerte")
     private Set<Alerte> alertes;
 
     @OneToMany(mappedBy = "vehicule", cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonManagedReference
+    @JsonManagedReference(value = "vehicule-ordreMission")
     private Set<OrdreMission> ordreMissions;
 }

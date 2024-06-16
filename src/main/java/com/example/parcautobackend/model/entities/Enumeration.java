@@ -19,6 +19,6 @@ public class Enumeration {
     private String designationEnumeration;
 
     @OneToMany(mappedBy = "enumeration", cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonManagedReference
+    @JsonManagedReference(value = "enumeration-vehicule")
     private Set<Vehicule> vehicules;
 }
