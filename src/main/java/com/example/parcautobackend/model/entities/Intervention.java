@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.*;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import java.util.Date;
 import java.util.Set;
@@ -24,21 +26,18 @@ public class Intervention {
     private int kmIntervention;
 
     @ManyToOne
+    @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "idVehicule")
-    @JsonBackReference(value = "vehicule-intervention")
     private Vehicule vehicule;
 
     @ManyToOne
+    @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "idTypeIntervention")
-    @JsonBackReference(value = "typeIntervention-intervention")
     private TypeIntervention typeIntervention;
 
     @ManyToOne
+    @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "idGarage")
-    @JsonBackReference(value = "garage-intervention")
     private Garage garage;
 
-    @OneToMany(mappedBy = "intervention", cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonManagedReference(value = "intervention-tache")
-    private Set<Tache> taches;
 }

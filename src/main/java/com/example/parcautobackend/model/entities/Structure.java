@@ -20,7 +20,4 @@ public class Structure {
     private Integer structureParent;
     private Integer responsableStructure;
 
-    @OneToMany(mappedBy = "structure", cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonManagedReference(value = "structure-utilisateur")
-    private Set<Utilisateur> utilisateurs;
 }

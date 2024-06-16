@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.*;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import java.util.Date;
 import java.util.Set;
@@ -27,26 +29,27 @@ public class OrdreMission {
     private String statutOm;
 
     @ManyToOne
+    @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "agent_id")
-    @JsonBackReference(value = "utilisateur-ordreMission")
     private Utilisateur agent;
 
     @ManyToOne
+    @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "vehicule_id")
-    @JsonBackReference(value = "vehicule-ordreMission")
     private Vehicule vehicule;
 
     @ManyToOne
+    @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "destination_id")
-    @JsonBackReference(value = "destination-ordreMission")
     private Destination destination;
 
     @ManyToOne
+    @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "perimetre_id")
-    @JsonBackReference(value = "perimetre-ordreMission")
     private Perimetre perimetre;
 
-    @OneToMany(mappedBy = "ordreMission", cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonManagedReference(value = "ordreMission-historiqueTrajet")
-    private Set<HistoriqueTrajet> historiqueTrajets;
+    @ManyToOne
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    @JsonManagedReference(value = "historiqueTrajet_id")
+    private HistoriqueTrajet historiqueTrajets;
 }

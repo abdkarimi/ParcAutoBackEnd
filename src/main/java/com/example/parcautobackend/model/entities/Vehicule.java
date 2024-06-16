@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.*;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import java.util.Date;
 import java.util.Set;
@@ -31,48 +33,33 @@ public class Vehicule {
     private Modele modele;
 
     @ManyToOne
+    @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "idAssurance")
-    @JsonBackReference(value = "assurance-vehicule")
     private Assurance assurance;
 
     @ManyToOne
+    @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "idTypeCarburant")
-    @JsonBackReference(value = "typeCarburant-vehicule")
     private TypeCarburant typeCarburant;
 
     @ManyToOne
+    @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "idTypeVehicule")
-    @JsonBackReference(value = "typeVehicule-vehicule")
     private TypeVehicule typeVehicule;
 
     @ManyToOne
+    @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "idEnumeration")
-    @JsonBackReference(value = "enumeration-vehicule")
     private Enumeration enumeration;
 
     @ManyToOne
+    @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "idStatut")
-    @JsonBackReference(value = "statut-vehicule")
     private Statut statut;
 
     @ManyToOne
+    @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "idConcessionnaire")
-    @JsonBackReference(value = "concessionnaire-vehicule")
     private Concessionnaire concessionnaire;
 
-    @OneToMany(mappedBy = "vehicule", cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonManagedReference(value = "vehicule-intervention")
-    private Set<Intervention> interventions;
-
-    @OneToMany(mappedBy = "vehicule", cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonManagedReference(value = "vehicule-accident")
-    private Set<Accident> accidents;
-
-    @OneToMany(mappedBy = "vehicule", cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonManagedReference(value = "vehicule-alerte")
-    private Set<Alerte> alertes;
-
-    @OneToMany(mappedBy = "vehicule", cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonManagedReference(value = "vehicule-ordreMission")
-    private Set<OrdreMission> ordreMissions;
 }

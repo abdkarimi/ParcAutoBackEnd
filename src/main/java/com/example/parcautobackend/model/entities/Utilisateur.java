@@ -60,9 +60,9 @@ public class Utilisateur implements UserDetails {
     @Column(name = "Photo")
     private String photo;
 
-    @OneToMany(mappedBy = "utilisateur", cascade = CascadeType.ALL, orphanRemoval = true)
+/*    @OneToMany(mappedBy = "utilisateur", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonManagedReference(value = "utilisateur-token")
-    private List<Token> tokens;
+    private List<Token> tokens;*/
 
     @ManyToOne(fetch = FetchType.EAGER)
     @OnDelete(action = OnDeleteAction.CASCADE)
@@ -74,8 +74,8 @@ public class Utilisateur implements UserDetails {
     private List<OrdreMission> ordreMissions;
 
     @ManyToOne
+    @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "structure_id")
-    @JsonBackReference(value = "structure-utilisateur")
     private Structure structure;
 
     @Override

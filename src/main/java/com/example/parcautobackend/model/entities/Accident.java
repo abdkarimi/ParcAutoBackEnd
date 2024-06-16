@@ -3,6 +3,8 @@ package com.example.parcautobackend.model.entities;
 import jakarta.persistence.*;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.*;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import java.util.Date;
 
@@ -21,7 +23,7 @@ public class Accident {
     private String lieuAccident;
 
     @ManyToOne
+    @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "idVehicule")
-    @JsonBackReference(value = "vehicule-accident")
     private Vehicule vehicule;
 }

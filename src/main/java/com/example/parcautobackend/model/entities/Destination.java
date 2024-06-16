@@ -18,7 +18,4 @@ public class Destination {
     private Long idDestination;
     private String libelleDestination;
 
-    @OneToMany(mappedBy = "destination", cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonManagedReference(value = "destination-ordreMission")
-    private Set<OrdreMission> ordreMissions;
 }

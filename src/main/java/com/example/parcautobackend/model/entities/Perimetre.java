@@ -20,7 +20,4 @@ public class Perimetre {
     private Double latitudePerimetre;
     private Double longitudePerimetre;
 
-    @OneToMany(mappedBy = "perimetre", cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonManagedReference(value = "perimetre-ordreMission")
-    private Set<OrdreMission> ordreMissions;
 }

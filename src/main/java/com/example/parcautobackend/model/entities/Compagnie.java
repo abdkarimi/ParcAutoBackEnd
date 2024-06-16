@@ -1,5 +1,6 @@
 package com.example.parcautobackend.model.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.*;
@@ -24,7 +25,4 @@ public class Compagnie {
     private String nomResponsableC;
     private String gsmResponsableC;
 
-    @OneToMany(mappedBy = "compagnie", cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonManagedReference(value = "compagnie-assurance")
-    private Set<Assurance> assurances;
 }

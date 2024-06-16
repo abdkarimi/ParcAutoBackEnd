@@ -23,7 +23,4 @@ public class Garage {
     private String emailGarage;
     private String adresseGarage;
 
-    @OneToMany(mappedBy = "garage", cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonManagedReference(value = "garage-intervention")
-    private Set<Intervention> interventions;
 }

@@ -17,8 +17,4 @@ public class HistoriqueTrajet {
     private Double latitudeTrajet;
     private Double longitudeTrajet;
 
-    @ManyToOne
-    @JoinColumn(name = "ordre_mission_id")
-    @JsonBackReference(value = "ordreMission-historiqueTrajet")
-    private OrdreMission ordreMission;
 }

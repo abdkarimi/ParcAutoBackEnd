@@ -18,7 +18,4 @@ public class Marque {
     private Long idMarque;
     private String libelleMarque;
 
-    @OneToMany(mappedBy = "marque", cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonManagedReference(value = "marque-modele")
-    private Set<Modele> modeles;
 }

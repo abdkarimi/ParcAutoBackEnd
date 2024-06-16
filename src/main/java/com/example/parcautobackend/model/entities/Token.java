@@ -1,7 +1,10 @@
 package com.example.parcautobackend.model.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 @Entity
 @Table(name = "token")
@@ -23,6 +26,7 @@ public class Token {
     private boolean loggedOut;
 
     @ManyToOne
+    @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "id_user")
     private Utilisateur utilisateur;
 }
