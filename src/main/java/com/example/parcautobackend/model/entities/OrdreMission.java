@@ -50,6 +50,6 @@ public class OrdreMission {
 
     @ManyToOne
     @OnDelete(action = OnDeleteAction.CASCADE)
-    @JsonManagedReference(value = "historiqueTrajet_id")
+    @JoinColumn(name = "historiqueTrajet_id")
     private HistoriqueTrajet historiqueTrajets;
 }

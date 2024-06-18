@@ -60,18 +60,11 @@ public class Utilisateur implements UserDetails {
     @Column(name = "Photo")
     private String photo;
 
-/*    @OneToMany(mappedBy = "utilisateur", cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonManagedReference(value = "utilisateur-token")
-    private List<Token> tokens;*/
-
     @ManyToOne(fetch = FetchType.EAGER)
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "id_role")
     private Role idRole;
 
-    @OneToMany(mappedBy = "agent", cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonManagedReference(value = "utilisateur-ordreMission")
-    private List<OrdreMission> ordreMissions;
 
     @ManyToOne
     @OnDelete(action = OnDeleteAction.CASCADE)

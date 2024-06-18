@@ -8,6 +8,7 @@ import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
 import java.util.Date;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -40,4 +41,6 @@ public class Intervention {
     @JoinColumn(name = "idGarage")
     private Garage garage;
 
+    @ManyToMany
+    private List<Tache> taches;
 }

@@ -19,8 +19,4 @@ public class Tache {
     private double tvaTache;
     private double prixTTC;
 
-    @ManyToOne
-    @JoinColumn(name = "idIntervention")
-    @JsonBackReference(value = "intervention-tache")
-    private Intervention intervention;
 }
