@@ -18,10 +18,4 @@ public class TypeVehicule {
     private Long idTypeVehicule;
     private String libelleTypeVehicule;
 
-    @OneToMany(mappedBy = "typeVehicule", cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonManagedReference
-    private Set<Vehicule> vehicules;
-
-    // Getters and setters
 }
-

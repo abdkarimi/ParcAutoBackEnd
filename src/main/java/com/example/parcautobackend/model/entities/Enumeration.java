@@ -18,10 +18,4 @@ public class Enumeration {
     private Long idEnumeration;
     private String designationEnumeration;
 
-    @OneToMany(mappedBy = "enumeration", cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonManagedReference
-    private Set<TypeIntervention> typeInterventions;
-
-    // Getters and setters
 }
-

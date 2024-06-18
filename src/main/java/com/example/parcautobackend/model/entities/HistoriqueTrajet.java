@@ -10,16 +10,11 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class Sanctionner {
+public class HistoriqueTrajet {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idSanction;
+    private Long idTrajet;
+    private Double latitudeTrajet;
+    private Double longitudeTrajet;
 
-    @ManyToOne
-    @JoinColumn(name = "idPV")
-    @JsonBackReference
-    private PV pv;
-
-    // Getters and setters
 }
-

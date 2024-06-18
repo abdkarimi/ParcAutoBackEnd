@@ -1,10 +1,10 @@
 package com.example.parcautobackend.model.entities;
 
 import jakarta.persistence.*;
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.*;
-
-import java.util.Set;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 @Entity
 @Setter
@@ -18,15 +18,8 @@ public class Modele {
     private Long idModele;
     private String libelleModele;
 
-    @OneToMany(mappedBy = "modele", cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonManagedReference
-    private Set<Elaborer> elaborers;
-
     @ManyToOne
+    @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "idMarque")
-    @JsonBackReference
     private Marque marque;
-
-    // Getters and setters
 }
-

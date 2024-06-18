@@ -19,5 +19,4 @@ public class Role {
     @Lob
     @Column(name = "Description", nullable = false)
     private String description;
-
 }

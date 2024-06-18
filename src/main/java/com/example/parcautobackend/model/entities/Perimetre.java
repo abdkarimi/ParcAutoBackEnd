@@ -4,7 +4,6 @@ import jakarta.persistence.*;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.*;
 
-import java.util.Date;
 import java.util.Set;
 
 @Entity
@@ -13,17 +12,12 @@ import java.util.Set;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class PV {
+public class Perimetre {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idPV;
-    private Date datePV;
-    private String cheminPV;
+    private Long idPerimetre;
+    private String nomPerimetre;
+    private Double latitudePerimetre;
+    private Double longitudePerimetre;
 
-    @OneToMany(mappedBy = "pv", cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonManagedReference
-    private Set<Sanctionner> sanctions;
-
-    // Getters and setters
 }
-

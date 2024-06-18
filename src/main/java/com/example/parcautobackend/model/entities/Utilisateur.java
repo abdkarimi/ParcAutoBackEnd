@@ -1,6 +1,7 @@
 package com.example.parcautobackend.model.entities;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import lombok.*;
@@ -20,7 +21,6 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-
 public class Utilisateur implements UserDetails {
     public Utilisateur(String username, String password) {
     }
@@ -60,15 +60,16 @@ public class Utilisateur implements UserDetails {
     @Column(name = "Photo")
     private String photo;
 
-    @OneToMany(mappedBy = "utilisateur")
-    private List<Token> tokens;
-
-
     @ManyToOne(fetch = FetchType.EAGER)
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "id_role")
     private Role idRole;
 
+
+    @ManyToOne
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    @JoinColumn(name = "structure_id")
+    private Structure structure;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

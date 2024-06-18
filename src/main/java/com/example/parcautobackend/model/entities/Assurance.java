@@ -1,8 +1,11 @@
 package com.example.parcautobackend.model.entities;
 
 import jakarta.persistence.*;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.*;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import java.util.Date;
 import java.util.Set;
@@ -21,10 +24,8 @@ public class Assurance {
     private Date debutGarantie;
     private Date finGarantie;
 
-    @OneToMany(mappedBy = "assurance", cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonManagedReference
-    private Set<Vehicule> vehicules;
-
-    // Getters and setters
+    @ManyToOne
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    @JoinColumn(name = "compagnie_id")
+    private Compagnie compagnie;
 }
-

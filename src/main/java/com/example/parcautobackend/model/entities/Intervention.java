@@ -1,11 +1,14 @@
 package com.example.parcautobackend.model.entities;
 
 import jakarta.persistence.*;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.*;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import java.util.Date;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -24,19 +27,20 @@ public class Intervention {
     private int kmIntervention;
 
     @ManyToOne
+    @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "idVehicule")
-    @JsonBackReference
     private Vehicule vehicule;
 
     @ManyToOne
+    @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "idTypeIntervention")
-    @JsonBackReference
     private TypeIntervention typeIntervention;
 
-    @OneToMany(mappedBy = "intervention", cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonManagedReference
-    private Set<Tache> taches;
+    @ManyToOne
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    @JoinColumn(name = "idGarage")
+    private Garage garage;
 
-    // Getters and setters
+    @ManyToMany
+    private List<Tache> taches;
 }
-

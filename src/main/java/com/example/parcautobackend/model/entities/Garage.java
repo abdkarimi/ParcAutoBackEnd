@@ -23,9 +23,4 @@ public class Garage {
     private String emailGarage;
     private String adresseGarage;
 
-    @OneToMany(mappedBy = "garage", cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonManagedReference
-    private Set<Tache> taches;
-
-    // Getters and setters
 }
