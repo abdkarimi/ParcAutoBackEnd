@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/ordremissions")
+@RequestMapping("/AULSH/ordremissions")
 public class OrdreMissionController {
 
     @Autowired

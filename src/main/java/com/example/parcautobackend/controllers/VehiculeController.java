@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/vehicules")
+@RequestMapping("/AULSH/vehicules")
 public class VehiculeController {
 
     @Autowired
