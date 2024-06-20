@@ -12,6 +12,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import java.time.LocalDate;
 import java.util.Collection;
+import java.util.Date;
 import java.util.List;
 
 @Table(name = "users")
@@ -38,6 +39,9 @@ public class Utilisateur implements UserDetails {
     @Column(name = "Prenom")
     private String prenom;
 
+    @Column(name = "account")
+    private Boolean account;
+
     @Column(name = "username")
     private String username;
 
@@ -55,7 +59,10 @@ public class Utilisateur implements UserDetails {
     private String adresse;
 
     @Column(name = "DateDeNaissance")
-    private LocalDate dateDeNaissance;
+    private Date dateDeNaissance;
+
+    @Column(name = "DateDeRecrutement")
+    private Date dateDeRecrutement;
 
     @Column(name = "Photo")
     private String photo;
