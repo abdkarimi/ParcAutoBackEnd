@@ -2,10 +2,13 @@ package com.example.parcautobackend.controllers;
 
 import com.example.parcautobackend.model.entities.Assurance;
 import com.example.parcautobackend.Service.AssuranceService;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 
@@ -17,8 +20,10 @@ public class AssuranceController {
     private AssuranceService assuranceService;
 
     @PostMapping
-    public ResponseEntity<Assurance> createAssurance(@RequestBody Assurance assurance) {
-        Assurance savedAssurance = assuranceService.saveAssurance(assurance);
+    public ResponseEntity<Assurance> createAssurance(@RequestParam("file") MultipartFile file, @RequestParam("assurance") String assuranceJson) throws IOException {
+        // Convert JSON string to Assurance object
+        Assurance assurance = new ObjectMapper().readValue(assuranceJson, Assurance.class);
+        Assurance savedAssurance = assuranceService.saveAssurance(file, assurance);
         return ResponseEntity.ok(savedAssurance);
     }
 
@@ -35,8 +40,10 @@ public class AssuranceController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Assurance> updateAssurance(@PathVariable Long id, @RequestBody Assurance assurance) {
-        Assurance updatedAssurance = assuranceService.updateAssurance(id, assurance);
+    public ResponseEntity<Assurance> updateAssurance(@PathVariable Long id, @RequestParam("file") MultipartFile file, @RequestParam("assurance") String assuranceJson) throws IOException {
+        // Convert JSON string to Assurance object
+        Assurance assurance = new ObjectMapper().readValue(assuranceJson, Assurance.class);
+        Assurance updatedAssurance = assuranceService.updateAssurance(id, file, assurance);
         return updatedAssurance != null ? ResponseEntity.ok(updatedAssurance) : ResponseEntity.notFound().build();
     }
 

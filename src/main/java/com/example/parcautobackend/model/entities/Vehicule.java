@@ -2,7 +2,6 @@ package com.example.parcautobackend.model.entities;
 
 import jakarta.persistence.*;
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.*;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
@@ -32,10 +31,7 @@ public class Vehicule {
     @JsonBackReference(value = "modele-vehicule")
     private Modele modele;
 
-    @ManyToOne
-    @OnDelete(action = OnDeleteAction.CASCADE)
-    @JoinColumn(name = "idAssurance")
-    private Assurance assurance;
+
 
     @ManyToOne
     @OnDelete(action = OnDeleteAction.CASCADE)

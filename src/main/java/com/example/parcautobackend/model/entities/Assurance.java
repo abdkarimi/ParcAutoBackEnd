@@ -23,9 +23,13 @@ public class Assurance {
     private String police;
     private Date debutGarantie;
     private Date finGarantie;
-
+    private String cheminPolice;
     @ManyToOne
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "compagnie_id")
     private Compagnie compagnie;
+    @ManyToOne
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    @JoinColumn(name = "idVehicule")
+    private Vehicule vehicule;
 }
