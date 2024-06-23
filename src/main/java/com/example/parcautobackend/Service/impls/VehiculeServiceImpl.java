@@ -1,5 +1,6 @@
 package com.example.parcautobackend.Service.impls;
 
+import com.example.parcautobackend.model.entities.Utilisateur;
 import com.example.parcautobackend.model.entities.Vehicule;
 import com.example.parcautobackend.model.repositories.VehiculeRepository;
 import com.example.parcautobackend.Service.VehiculeService;
@@ -64,9 +65,15 @@ public class VehiculeServiceImpl implements VehiculeService {
 
     @Override
     public Vehicule updateVehiculeWithoutImage(Vehicule vehicule) {
-        if (vehiculeRepository.existsById(vehicule.getIdVehicule())) {
-            return vehiculeRepository.save(vehicule);
+        Optional<Vehicule> existingVehiculeOpt = vehiculeRepository.findById(vehicule.getIdVehicule());
+        if (existingVehiculeOpt.isPresent()) {
+            Vehicule existingVehicule = existingVehiculeOpt.get();
+            vehicule.setPhotoVehicule(existingVehicule.getPhotoVehicule());
+            if (vehiculeRepository.existsById(vehicule.getIdVehicule())) {
+                return vehiculeRepository.save(vehicule);
+            }
         }
+
         return null;
     }
 

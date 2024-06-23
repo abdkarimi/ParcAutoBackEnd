@@ -22,16 +22,15 @@ public class Vehicule {
     private String matriculeVehicule;
     private Date dateCirculation;
     private int puissanceFiscale;
+    private int kilometrageVehicule;
     private int nbPlace;
     private String couleurVehicule;
     private String photoVehicule;
 
     @ManyToOne
+    @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "idModele")
-    @JsonBackReference(value = "modele-vehicule")
     private Modele modele;
-
-
 
     @ManyToOne
     @OnDelete(action = OnDeleteAction.CASCADE)
