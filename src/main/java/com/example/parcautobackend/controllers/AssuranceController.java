@@ -40,7 +40,7 @@ public class AssuranceController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Assurance> updateAssurance(@PathVariable Long id, @RequestParam("file") MultipartFile file, @RequestParam("assurance") String assuranceJson) throws IOException {
+    public ResponseEntity<Assurance> updateAssurance(@PathVariable Long id, @RequestParam(value = "file", required = false) MultipartFile file, @RequestParam("assurance") String assuranceJson) throws IOException {
         // Convert JSON string to Assurance object
         Assurance assurance = new ObjectMapper().readValue(assuranceJson, Assurance.class);
         Assurance updatedAssurance = assuranceService.updateAssurance(id, file, assurance);

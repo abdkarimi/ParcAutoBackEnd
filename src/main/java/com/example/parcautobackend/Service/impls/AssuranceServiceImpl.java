@@ -1,6 +1,7 @@
 package com.example.parcautobackend.Service.impls;
 
 import com.example.parcautobackend.model.entities.Assurance;
+import com.example.parcautobackend.model.entities.Vehicule;
 import com.example.parcautobackend.model.repositories.AssuranceRepository;
 import com.example.parcautobackend.Service.AssuranceService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -56,7 +57,12 @@ public class AssuranceServiceImpl implements AssuranceService {
                 String fileName = saveFile(file);
                 assurance.setCheminPolice(fileName);
             }
-            assurance.setIdAssurance(id);
+            Optional<Assurance> existingAssuranceOpt = assuranceRepository.findById(assurance.getIdAssurance());
+            if (existingAssuranceOpt.isPresent()) {
+                Assurance existingAssurance = existingAssuranceOpt.get();
+                assurance.setCheminPolice(existingAssurance.getCheminPolice());
+                assurance.setIdAssurance(id);
+            }
             return assuranceRepository.save(assurance);
         }
         return null;
