@@ -17,9 +17,9 @@ public class Alerte {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idAlerte;
     private String descriptionAlerte;
-    private Boolean kmAlerte;
+    private int kmAlerte;
     private String declencheAlerte;
-
+    private String status;
     @ManyToOne
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "vehicule_id")
