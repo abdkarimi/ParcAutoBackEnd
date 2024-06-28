@@ -8,6 +8,7 @@ import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
 import java.util.Date;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -27,7 +28,10 @@ public class OrdreMission {
     private Integer kmRetourOm;
     private Double dotationCarburant;
     private String statutOm;
-
+    private Date dateDepart;
+    private String heureDepart;
+    private Date dateRetour;
+    private String heureRetour;
     @ManyToOne
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "agent_id")
@@ -52,4 +56,7 @@ public class OrdreMission {
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "historiqueTrajet_id")
     private HistoriqueTrajet historiqueTrajets;
+
+    @ManyToMany
+    private List<Utilisateur> accompagnant;
 }
