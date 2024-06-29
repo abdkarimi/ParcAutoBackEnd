@@ -10,4 +10,5 @@ public interface OrdreMissionService {
     List<OrdreMission> getAllOrdreMissions();
     OrdreMission updateOrdreMission(Long id, OrdreMission ordreMission);
     void deleteOrdreMission(Long id);
+    List<OrdreMission> getAllOrdreMissionOfDepartement(Long departementId);
 }

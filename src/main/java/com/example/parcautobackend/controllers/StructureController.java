@@ -45,4 +45,10 @@ public class StructureController {
         structureService.deleteStructure(id);
         return ResponseEntity.noContent().build();
     }
+
+    @GetMapping("/top-parent/{userId}")
+    public ResponseEntity<Object> getTopParentStructureByUserId(@PathVariable Long userId) {
+        Object result = structureService.findTopParentStructureByUserId(userId);
+        return ResponseEntity.ok(result);
+    }
 }

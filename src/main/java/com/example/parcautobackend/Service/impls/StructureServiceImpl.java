@@ -43,4 +43,20 @@ public class StructureServiceImpl implements StructureService {
     public void deleteStructure(Long id) {
         structureRepository.deleteById(id);
     }
+
+   /* @Override*/
+/*    public Object findTopParentStructureByUserId(Long userId) {
+        return structureRepository.findTopParentStructureByUserId(userId);
+    }*/
+    @Override
+    public Structure findTopParentStructureByUserId(Long userId) {
+        Object[] result = (Object[]) structureRepository.findTopParentStructureByUserId(userId);
+        if (result != null && result.length > 0) {
+            Structure structure = new Structure();
+            structure.setIdStructure(((Number) result[0]).longValue());
+            structure.setNomStructure((String) result[1]);
+            return structure;
+        }
+        return null;
+    }
 }

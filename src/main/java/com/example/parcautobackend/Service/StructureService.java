@@ -10,4 +10,5 @@ public interface StructureService {
     List<Structure> getAllStructures();
     Structure updateStructure(Long id, Structure structure);
     void deleteStructure(Long id);
+    Object findTopParentStructureByUserId(Long userId);
 }

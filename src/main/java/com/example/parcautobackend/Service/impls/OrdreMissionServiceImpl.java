@@ -1,11 +1,16 @@
 package com.example.parcautobackend.Service.impls;
 
+import com.example.parcautobackend.Service.StructureService;
+import com.example.parcautobackend.Service.UtilisateurService;
 import com.example.parcautobackend.model.entities.OrdreMission;
+import com.example.parcautobackend.model.entities.Structure;
+import com.example.parcautobackend.model.entities.Utilisateur;
 import com.example.parcautobackend.model.repositories.OrdreMissionRepository;
 import com.example.parcautobackend.Service.OrdreMissionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -15,6 +20,11 @@ public class OrdreMissionServiceImpl implements OrdreMissionService {
     @Autowired
     private OrdreMissionRepository ordreMissionRepository;
 
+    @Autowired
+    private UtilisateurService utilisateurService;
+
+    @Autowired
+    private StructureService structureService;
     @Override
     public OrdreMission saveOrdreMission(OrdreMission ordreMission) {
         return ordreMissionRepository.save(ordreMission);
@@ -38,7 +48,20 @@ public class OrdreMissionServiceImpl implements OrdreMissionService {
         }
         return null;
     }
+    @Override
+    public List<OrdreMission> getAllOrdreMissionOfDepartement(Long departementId) {
+        List<OrdreMission> ordreMissions = new ArrayList<>();
+        List<Utilisateur> utilisateurs = utilisateurService.getAllUtilisateurs();
 
+        for (Utilisateur utilisateur : utilisateurs) {
+            Structure topParentStructure = (Structure) structureService.findTopParentStructureByUserId(utilisateur.getId());
+            if (topParentStructure != null && topParentStructure.getIdStructure().equals(departementId)) {
+                ordreMissions.addAll(ordreMissionRepository.findByAgent(utilisateur));
+            }
+        }
+
+        return ordreMissions;
+    }
     @Override
     public void deleteOrdreMission(Long id) {
         ordreMissionRepository.deleteById(id);

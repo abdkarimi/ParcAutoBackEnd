@@ -45,4 +45,9 @@ public class OrdreMissionController {
         ordreMissionService.deleteOrdreMission(id);
         return ResponseEntity.noContent().build();
     }
+    @GetMapping("/departement/{departementId}")
+    public ResponseEntity<List<OrdreMission>> getAllOrdreMissionOfDepartement(@PathVariable Long departementId) {
+        List<OrdreMission> ordreMissions = ordreMissionService.getAllOrdreMissionOfDepartement(departementId);
+        return ResponseEntity.ok(ordreMissions);
+    }
 }
