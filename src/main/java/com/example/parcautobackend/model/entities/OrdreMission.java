@@ -33,6 +33,7 @@ public class OrdreMission {
     private Date dateRetour;
     private String heureRetour;
     private Date dateApprobation;
+    private Date dateValidation;
     @ManyToOne
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "agent_id")
@@ -42,6 +43,11 @@ public class OrdreMission {
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "approbateur_id")
     private Utilisateur approbateur;
+
+    @ManyToOne
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    @JoinColumn(name = "validateur_id")
+    private Utilisateur validateur;
 
     @ManyToOne
     @OnDelete(action = OnDeleteAction.CASCADE)
